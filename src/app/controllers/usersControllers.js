@@ -5,14 +5,14 @@ import { readFileSync, writeFileSync } from "fs"
 
 // ler
 const readFile = () =>{
-    const content = readFileSync('../myJob/allpeaces.json', "utf-8")
+    const content = readFileSync('./allpeaces.json', "utf-8")
     return(JSON.parse(content))
 }
 
 // salva
 const writeFile = (content) =>{
     const updateFile = JSON.stringify(content)
-    writeFileSync('../myJob/allpeaces.json', updateFile, 'utf-8')
+    writeFileSync('./allpeaces.json', updateFile, 'utf-8')
 }
 
 

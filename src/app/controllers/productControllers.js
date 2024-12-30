@@ -16,7 +16,7 @@ const writeFile = (content) =>{
 }
 
 
-class usersControllers{
+class productControllers{
 
     // SHOW ALL
     show(req, res){
@@ -41,7 +41,6 @@ class usersControllers{
 
         res.send(currentContent[cleanPath][selectedItem])
                                 // <>
-        // console.log(currentContent[cleanPath][selectedItem])
     }
 
 
@@ -58,7 +57,7 @@ class usersControllers{
         
         // lendo o array atual e extraindo
         const extraindoArrays = Object.values(currentContent)
-        // lido e copactando todos em um so
+        // lendo e copactando todos em um so
         const achatandoArrays = extraindoArrays.flat()
     
     
@@ -93,7 +92,7 @@ class usersControllers{
         currentContent[cleanPath].push({id, nome, image, marca, price, qtd})
         
         writeFile(currentContent)
-        res.send("Criado com sucesso!")
+        res.send('criado com sucesso')
         
     }
 
@@ -482,4 +481,4 @@ class usersControllers{
 }
 
 
-export default new usersControllers();
+export default new productControllers();

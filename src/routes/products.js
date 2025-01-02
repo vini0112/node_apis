@@ -3,11 +3,23 @@ import Router from "express";
 import productControllers from "../app/controllers/productControllers.js";
 import { storage } from "../multerConfig.js";
 import multer from "multer";
-
+import path from 'path'
 const router = Router()
 
 // Configuração do Multer
-const upload = multer({storage: storage})
+const upload = multer({storage: storage,
+    limits: {fileSize: 1500000},
+    fileFilter: function(req, file, cb) {
+        checkFileType(file, cb)
+    }
+})
+
+function checkFileType(file, cb){
+    const fileTypes = /jpeg|png|jpg/
+    const extname = fileTypes.test(path.extname(file.originalname).toLowerCase())
+    const mimetype = fileTypes.test(file.mimetype)
+
+}
 
 // GET
 router.get('/', productControllers.show)
@@ -135,8 +147,8 @@ router.post('/upload', upload.single('image'), (req, res) =>{
 
 
 
-// POST
-router.post('/oleos' , upload.single('image') ,productControllers.postOleo)
+// POST , upload.single('image')
+router.post('/oleos' ,productControllers.postOleo)
 router.post('/baterias', productControllers.postBateriaYfluido)
 router.post('/fluidos', productControllers.postBateriaYfluido)
 

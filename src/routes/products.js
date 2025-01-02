@@ -147,8 +147,8 @@ router.post('/upload', upload.single('image'), (req, res) =>{
 
 
 
-// POST , upload.single('image')
-router.post('/oleos' ,productControllers.postOleo)
+// POST , 
+router.post('/oleos' ,upload.single('image'),productControllers.postOleo)
 router.post('/baterias', productControllers.postBateriaYfluido)
 router.post('/fluidos', productControllers.postBateriaYfluido)
 

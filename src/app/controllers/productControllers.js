@@ -49,9 +49,8 @@ class productControllers{
     postOleo(req, res){
 
         // receiving - i erased image
-        const {nome, marca, info, price, qtd} = req.body
+        const {nome, marca, info, image, price, qtd} = req.body
 
-        // const file = req.body
         // lendo
         const currentContent = readFile()
         
@@ -60,7 +59,7 @@ class productControllers{
         const extraindoArrays = Object.values(currentContent)
         const achatandoArrays = extraindoArrays.flat()
 
-        const image = req.file ? `/uploads/${req.file.filename}` : null;
+        
     
         // definindo ID
         const id = Math.max(...achatandoArrays.map((item) => item.id)) + 1

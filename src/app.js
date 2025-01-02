@@ -1,5 +1,5 @@
 import express, { Router, json } from "express"
-import path from 'path'
+import path, { dirname } from 'path'
 import cors from "cors"
 import router from "./routes/products.js"
 import usersRouter from "./routes/users.js"
@@ -13,7 +13,7 @@ app.use(express.json())
 // app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(router)
 app.use(usersRouter)
-
+// app.use('/uploads', express.static(path.join(__filename, 'uploads')))
 
 
 export default app

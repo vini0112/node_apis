@@ -59,16 +59,17 @@ class productControllers{
         const extraindoArrays = Object.values(currentContent)
         const achatandoArrays = extraindoArrays.flat()
 
-        const image = req.file ? `/uploads/${req.file.filename}` : null;
+        // const image = req.file ? `/uploads/${req.file.filename}` : null;
     
         // definindo ID
         const id = Math.max(...achatandoArrays.map((item) => item.id)) + 1
-    
+
+
         // salvando
         currentContent.oleos.push({id, nome, marca, image, info, price, qtd})
         
         writeFile(currentContent)
-        res.send(currentContent.oleos)
+        
         // enviado resultado
         res.send("Criado com sucesso!")
         

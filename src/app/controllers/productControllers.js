@@ -48,27 +48,27 @@ class productControllers{
     // POSTS
     postOleo(req, res){
 
-        // receiving
-        const {nome, image, marca, info, price, qtd} = req.body
+        // receiving - i erased image
+        const {nome, marca, info, price, qtd} = req.body
 
         // lendo
         const currentContent = readFile()
         
-        
+    
         // lendo o array atual e extraindo
         const extraindoArrays = Object.values(currentContent)
-        // lendo e copactando todos em um so
         const achatandoArrays = extraindoArrays.flat()
-    
+
+        const image = req.file ? `/uploads/${req.file.filename}` : null;
     
         // definindo ID
         const id = Math.max(...achatandoArrays.map((item) => item.id)) + 1
     
         // salvando
-        currentContent.oleos.push({id, nome, image, marca, info, price, qtd})
+        currentContent.oleos.push({id, nome, marca, image, info, price, qtd})
         
         writeFile(currentContent)
-    
+        res.send(currentContent.oleos)
         // enviado resultado
         res.send("Criado com sucesso!")
         

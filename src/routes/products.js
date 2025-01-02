@@ -1,9 +1,13 @@
 
 import Router from "express";
 import productControllers from "../app/controllers/productControllers.js";
+import { storage } from "../multerConfig.js";
+import multer from "multer";
 
 const router = Router()
 
+// Configuração do Multer
+const upload = multer({storage: storage})
 
 // GET
 router.get('/', productControllers.show)
@@ -105,11 +109,34 @@ router.get('/acessoriosEscap/:id', productControllers.showById)
 
 
 
+// UPLOAD IMAGE upload.single('image'),
+router.post('/upload', upload.single('image'), (req, res) =>{
+
+    try {
+        const file = req.file;
+        if (!file) {
+            return res.status(400).json({ error: 'Nenhum arquivo enviado' });
+        }
+    
+        res.json({
+            message: 'Upload realizado com sucesso!',
+            file: {
+                originalname: file.originalname,
+                filename: file.filename,
+                path: file.path,
+                size: file.size,
+            },
+        });
+
+        } catch (err) {
+        res.status(500).json({ error: err.message });
+        }
+} )
 
 
 
 // POST
-router.post('/oleos', productControllers.postOleo)
+router.post('/oleos' , upload.single('image') ,productControllers.postOleo)
 router.post('/baterias', productControllers.postBateriaYfluido)
 router.post('/fluidos', productControllers.postBateriaYfluido)
 

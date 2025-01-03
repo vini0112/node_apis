@@ -49,18 +49,24 @@ class productControllers{
     postOleo(req, res){
 
         // receiving - i erased image
-        const {nome, marca, info, image, price, qtd} = req.body
+        const {nome, marca, info, price, qtd} = req.body
+        const file = req.file.path
+        
+        if(!file){
+            return res.status(400).json({ error: 'Nenhum arquivo enviado' });
+        }
 
         // lendo
         const currentContent = readFile()
         
-    
+
         // lendo o array atual e extraindo
         const extraindoArrays = Object.values(currentContent)
         const achatandoArrays = extraindoArrays.flat()
 
+        const image = file
         
-    
+        
         // definindo ID
         const id = Math.max(...achatandoArrays.map((item) => item.id)) + 1
 
@@ -69,9 +75,8 @@ class productControllers{
         currentContent.oleos.push({id, nome, marca, image, info, price, qtd})
         
         writeFile(currentContent)
-        
         // enviado resultado
-        res.send("Criado com sucesso!")
+        res.status(201).send()
         
     }
 

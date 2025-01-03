@@ -9,17 +9,10 @@ const router = Router()
 // Configuração do Multer
 const upload = multer({storage: storage,
     limits: {fileSize: 1500000},
-    fileFilter: function(req, file, cb) {
-        checkFileType(file, cb)
-    }
+    
 })
 
-function checkFileType(file, cb){
-    const fileTypes = /jpeg|png|jpg/
-    const extname = fileTypes.test(path.extname(file.originalname).toLowerCase())
-    const mimetype = fileTypes.test(file.mimetype)
 
-}
 
 // GET
 router.get('/', productControllers.show)
@@ -122,33 +115,31 @@ router.get('/acessoriosEscap/:id', productControllers.showById)
 
 
 // UPLOAD IMAGE upload.single('image'),
-router.post('/upload', upload.single('image'), (req, res) =>{
+// router.post('/upload', upload.single('image'), (req, res) =>{
+//     try {
+//         const file = req.file;
+//         if (!file) {
+//             return res.status(400).json({ error: 'Nenhum arquivo enviado' });
+//         }
+//         res.json({
+//             message: 'Upload realizado com sucesso!',
+//             file: {
+//                 originalname: file.originalname,
+//                 filename: file.filename,
+//                 path: file.path,
+//                 size: file.size,
+//             },
+//         });
 
-    try {
-        const file = req.file;
-        if (!file) {
-            return res.status(400).json({ error: 'Nenhum arquivo enviado' });
-        }
-    
-        res.json({
-            message: 'Upload realizado com sucesso!',
-            file: {
-                originalname: file.originalname,
-                filename: file.filename,
-                path: file.path,
-                size: file.size,
-            },
-        });
-
-        } catch (err) {
-        res.status(500).json({ error: err.message });
-        }
-} )
+//         } catch (err) {
+//         res.status(500).json({ error: err.message });
+//         }
+// } )
 
 
 
 // POST , 
-router.post('/oleos' ,upload.single('image'),productControllers.postOleo)
+router.post('/oleos' , upload.single('image'), productControllers.postOleo)
 router.post('/baterias', productControllers.postBateriaYfluido)
 router.post('/fluidos', productControllers.postBateriaYfluido)
 

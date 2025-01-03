@@ -15154,6 +15154,7 @@
     ],
     "users": [
         {
+            "id": 1,
             "username": "vinicius",
             "email": "viniciuseloi10@gmail.com",
             "password": "vini10"

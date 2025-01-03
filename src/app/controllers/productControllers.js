@@ -53,11 +53,13 @@ class productControllers{
         const price = Number(req.body.price)
         const qtd = Number(req.body.qtd)
 
-        const file = req.file.path
+        const file = req.file
         
         if(!file){
             return res.status(400).json({ error: 'Nenhum arquivo enviado' });
         }
+
+        const image = `/uploads/${file.filename}`;
 
         // lendo
         const currentContent = readFile()
@@ -67,7 +69,7 @@ class productControllers{
         const extraindoArrays = Object.values(currentContent)
         const achatandoArrays = extraindoArrays.flat()
 
-        const image = file
+        
         
         
         // definindo ID

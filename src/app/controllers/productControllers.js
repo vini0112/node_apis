@@ -48,23 +48,19 @@ class productControllers{
     // POSTS
     postOleo(req, res){
 
-        // receiving - i erased image
+        // receiving
         const {nome, marca, info} = req.body
         const price = Number(req.body.price)
         const qtd = Number(req.body.qtd)
-
         const file = req.file
         
         if(!file){
             return res.status(400).json({ error: 'Nenhum arquivo enviado' });
         }
 
-        // console.log(file) uploads
-
-        // const image = `/uploads/${file.filename}`;
+        // url publica da imagem!
         const image = `https://store-api-rxgw.onrender.com/uploads/${req.file.filename}`;
-        // const image = `:///uploads/${file.filename}`
-        // const image = file
+        
 
         // lendo
         const currentContent = readFile()
@@ -84,17 +80,27 @@ class productControllers{
         currentContent.oleos.push({id, nome, marca, image, info, price, qtd})
         
         writeFile(currentContent)
-        // enviado resultado
-        // res.send(currentContent.oleos)
         res.status(201).send()
         
     }
 
     postBateriaYfluido(req, res){
 
-        const {nome, image, marca, price, qtd} = req.body
+        const {nome, marca} = req.body
+        const {price} = Number(req.body.price)
+        const {qtd} = Number(req.body.qtd)
+        const file = req.file
+        
+        if(!file){
+            return res.status(400).json({ error: 'Nenhum arquivo enviado' });
+        }
+
+        // url publica da imagem!
+        const image = `https://store-api-rxgw.onrender.com/uploads/${req.file.filename}`;
+
         const path = req.path.replace(/\/\d+$/, '')
         const cleanPath = path.split('/').filter(segment => isNaN(segment)).join('/')
+
 
         const currentContent = readFile()
         
@@ -122,7 +128,20 @@ class productControllers{
 
         // console.log(cleanPath)
         if(aplicacoes && !aplicacoesTwo){
-            const {nome, image, marca, info, linha, linhaCode, code, linkApli,price, qtd, aplicacoes} = req.body
+            const {nome, marca, info, linha, linhaCode, linkApli, aplicacoes} = req.body
+
+            const {price} = Number(req.body.price)
+            const {qtd} = Number(req.body.qtd)
+            const {code} = Number(req.body.code)
+            const file = req.file
+
+            if(!file){
+                return res.status(400).json({ error: 'Nenhum arquivo enviado' });
+            }
+    
+            // url publica da imagem!
+            const image = `https://store-api-rxgw.onrender.com/uploads/${req.file.filename}`;
+
 
             const currentContent = readFile()
             const extraindoArrays = Object.values(currentContent)
@@ -139,7 +158,19 @@ class productControllers{
 
         else if(aplicacoesTwo && !aplicacoesThree){
 
-            const {nome, image, marca, info, linha, linhaCode, secundLineCode, code, linkApli,price, qtd, aplicacoes, aplicacoesTwo} = req.body
+            const {nome, marca, info, linha, linhaCode, secundLineCode, linkApli, aplicacoes, aplicacoesTwo} = req.body
+
+            const {price} = Number(req.body.price)
+            const {qtd} = Number(req.body.qtd)
+            const {code} = Number(req.body.code)
+            const file = req.file
+
+            if(!file){
+                return res.status(400).json({ error: 'Nenhum arquivo enviado' });
+            }
+    
+            // url publica da imagem!
+            const image = `https://store-api-rxgw.onrender.com/uploads/${req.file.filename}`;
 
             const currentContent = readFile()
             const extraindoArrays = Object.values(currentContent)
@@ -156,7 +187,19 @@ class productControllers{
         }
         
         else if(aplicacoesThree){
-            const {nome, image, marca, info, linha, linhaCode, secundLineCode, thirdLineCode, code, linkApli,price, qtd, aplicacoes, aplicacoesTwo, aplicacoesThree} = req.body
+            const {nome, marca, info, linha, linhaCode, secundLineCode, thirdLineCode, linkApli, aplicacoes, aplicacoesTwo, aplicacoesThree} = req.body
+
+            const {price} = Number(req.body.price)
+            const {qtd} = Number(req.body.qtd)
+            const {code} = Number(req.body.code)
+            const file = req.file
+
+            if(!file){
+                return res.status(400).json({ error: 'Nenhum arquivo enviado' });
+            }
+    
+            // url publica da imagem!
+            const image = `https://store-api-rxgw.onrender.com/uploads/${req.file.filename}`;
 
             const currentContent = readFile()
             const extraindoArrays = Object.values(currentContent)
@@ -184,7 +227,19 @@ class productControllers{
 
         // console.log(cleanPath)
         if(aplicacoes && !aplicacoesTwo){
-            const {nome, image, marca, info, linha, linhaCode, code, linkApli,price, qtd, sistema, aplicacoes} = req.body
+            const {nome, marca, info, linha, linhaCode, linkApli, sistema, aplicacoes} = req.body
+
+            const {price} = Number(req.body.price)
+            const {qtd} = Number(req.body.qtd)
+            const {code} = Number(req.body.code)
+            const file = req.file
+
+            if(!file){
+                return res.status(400).json({ error: 'Nenhum arquivo enviado' });
+            }
+    
+            // url publica da imagem!
+            const image = `https://store-api-rxgw.onrender.com/uploads/${req.file.filename}`;
 
             const currentContent = readFile()
             const extraindoArrays = Object.values(currentContent)
@@ -201,7 +256,19 @@ class productControllers{
 
         else if(aplicacoesTwo && !aplicacoesThree){
 
-            const {nome, image, marca, info, linha, linhaCode, secundLineCode, code, linkApli,price, qtd, sistema, aplicacoes, aplicacoesTwo} = req.body
+            const {nome, marca, info, linha, linhaCode, secundLineCode, linkApli, sistema, aplicacoes, aplicacoesTwo} = req.body
+
+            const {price} = Number(req.body.price)
+            const {qtd} = Number(req.body.qtd)
+            const {code} = Number(req.body.code)
+            const file = req.file
+
+            if(!file){
+                return res.status(400).json({ error: 'Nenhum arquivo enviado' });
+            }
+    
+            // url publica da imagem!
+            const image = `https://store-api-rxgw.onrender.com/uploads/${req.file.filename}`;
 
             const currentContent = readFile()
             const extraindoArrays = Object.values(currentContent)
@@ -218,7 +285,19 @@ class productControllers{
         }
         
         else if(aplicacoesThree){
-            const {nome, image, marca, info, linha, linhaCode, secundLineCode, thirdLineCode, code, linkApli,price, qtd, sistema, aplicacoes, aplicacoesTwo, aplicacoesThree} = req.body
+            const {nome, marca, info, linha, linhaCode, secundLineCode, thirdLineCode, linkApli, sistema, aplicacoes, aplicacoesTwo, aplicacoesThree} = req.body
+
+            const {price} = Number(req.body.price)
+            const {qtd} = Number(req.body.qtd)
+            const {code} = Number(req.body.code)
+            const file = req.file
+
+            if(!file){
+                return res.status(400).json({ error: 'Nenhum arquivo enviado' });
+            }
+    
+            // url publica da imagem!
+            const image = `https://store-api-rxgw.onrender.com/uploads/${req.file.filename}`;
 
             const currentContent = readFile()
             const extraindoArrays = Object.values(currentContent)

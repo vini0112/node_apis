@@ -87,8 +87,8 @@ class productControllers{
     postBateriaYfluido(req, res){
 
         const {nome, marca} = req.body
-        const {price} = Number(req.body.price)
-        const {qtd} = Number(req.body.qtd)
+        const price = Number(req.body.price)
+        const qtd = Number(req.body.qtd)
         const file = req.file
         
         if(!file){
@@ -131,8 +131,8 @@ class productControllers{
             const {nome, marca, info, linha, linhaCode, linkApli, aplicacoes} = req.body
 
             const {price} = Number(req.body.price)
-            const {qtd} = Number(req.body.qtd)
-            const {code} = Number(req.body.code)
+            const qtd = Number(req.body.qtd)
+            const code = Number(req.body.code)
             const file = req.file
 
             if(!file){
@@ -160,9 +160,9 @@ class productControllers{
 
             const {nome, marca, info, linha, linhaCode, secundLineCode, linkApli, aplicacoes, aplicacoesTwo} = req.body
 
-            const {price} = Number(req.body.price)
-            const {qtd} = Number(req.body.qtd)
-            const {code} = Number(req.body.code)
+            const price = Number(req.body.price)
+            const qtd = Number(req.body.qtd)
+            const code = Number(req.body.code)
             const file = req.file
 
             if(!file){
@@ -189,9 +189,9 @@ class productControllers{
         else if(aplicacoesThree){
             const {nome, marca, info, linha, linhaCode, secundLineCode, thirdLineCode, linkApli, aplicacoes, aplicacoesTwo, aplicacoesThree} = req.body
 
-            const {price} = Number(req.body.price)
-            const {qtd} = Number(req.body.qtd)
-            const {code} = Number(req.body.code)
+            const price = Number(req.body.price)
+            const qtd = Number(req.body.qtd)
+            const code = Number(req.body.code)
             const file = req.file
 
             if(!file){
@@ -229,9 +229,9 @@ class productControllers{
         if(aplicacoes && !aplicacoesTwo){
             const {nome, marca, info, linha, linhaCode, linkApli, sistema, aplicacoes} = req.body
 
-            const {price} = Number(req.body.price)
-            const {qtd} = Number(req.body.qtd)
-            const {code} = Number(req.body.code)
+            const price = Number(req.body.price)
+            const qtd = Number(req.body.qtd)
+            const code = Number(req.body.code)
             const file = req.file
 
             if(!file){
@@ -258,9 +258,9 @@ class productControllers{
 
             const {nome, marca, info, linha, linhaCode, secundLineCode, linkApli, sistema, aplicacoes, aplicacoesTwo} = req.body
 
-            const {price} = Number(req.body.price)
-            const {qtd} = Number(req.body.qtd)
-            const {code} = Number(req.body.code)
+            const price = Number(req.body.price)
+            const qtd = Number(req.body.qtd)
+            const code = Number(req.body.code)
             const file = req.file
 
             if(!file){
@@ -287,9 +287,9 @@ class productControllers{
         else if(aplicacoesThree){
             const {nome, marca, info, linha, linhaCode, secundLineCode, thirdLineCode, linkApli, sistema, aplicacoes, aplicacoesTwo, aplicacoesThree} = req.body
 
-            const {price} = Number(req.body.price)
-            const {qtd} = Number(req.body.qtd)
-            const {code} = Number(req.body.code)
+            const price = Number(req.body.price)
+            const qtd = Number(req.body.qtd)
+            const code = Number(req.body.code)
             const file = req.file
 
             if(!file){

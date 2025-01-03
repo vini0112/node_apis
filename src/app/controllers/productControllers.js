@@ -49,7 +49,10 @@ class productControllers{
     postOleo(req, res){
 
         // receiving - i erased image
-        const {nome, marca, info, price, qtd} = req.body
+        const {nome, marca, info} = req.body
+        const price = Number(req.body.price)
+        const qtd = Number(req.body.qtd)
+
         const file = req.file.path
         
         if(!file){
@@ -76,6 +79,7 @@ class productControllers{
         
         writeFile(currentContent)
         // enviado resultado
+        // res.send(currentContent.oleos)
         res.status(201).send()
         
     }

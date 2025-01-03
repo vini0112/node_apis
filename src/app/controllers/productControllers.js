@@ -82,7 +82,7 @@ class productControllers{
         
         writeFile(currentContent)
         // enviado resultado
-        // res.send(currentContent.oleos)
+        res.send(currentContent.oleos)
         res.status(201).send()
         
     }

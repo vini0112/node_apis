@@ -59,7 +59,8 @@ class productControllers{
             return res.status(400).json({ error: 'Nenhum arquivo enviado' });
         }
 
-        const image = `/uploads/${file.filename}`;
+        // const image = `/uploads/${file.filename}`;
+        const image = `https://store-api-rxgw.onrender.com/uploads/${file.filename}`
 
         // lendo
         const currentContent = readFile()

@@ -7,12 +7,13 @@ import { fileURLToPath } from "url"
 
 const app = express()
 
-const fileName = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(fileName)
+// const fileName = fileURLToPath(import.meta.url)
+// const __dirname = path.dirname(fileName)
 
 app.use(cors())
 app.use(express.json())
-app.use('/uploads', express.static(path.join(__dirname ,'uploads')))
+app.use('/uploads', express.static('uploads'))
+
 app.use(router)
 app.use(usersRouter)
 

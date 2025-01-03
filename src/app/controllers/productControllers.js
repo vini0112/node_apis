@@ -58,10 +58,13 @@ class productControllers{
         if(!file){
             return res.status(400).json({ error: 'Nenhum arquivo enviado' });
         }
-        // console.log(file)
+
+        // console.log(file) uploads
+
         // const image = `/uploads/${file.filename}`;
-        // const image = `https://store-api-rxgw.onrender.com/uploads/${file.filename}`
-        const image = file.path
+        const image = `https://store-api-rxgw.onrender.com/uploads/${req.file.filename}`;
+        // const image = `:///uploads/${file.filename}`
+        // const image = file
 
         // lendo
         const currentContent = readFile()
@@ -70,7 +73,6 @@ class productControllers{
         // lendo o array atual e extraindo
         const extraindoArrays = Object.values(currentContent)
         const achatandoArrays = extraindoArrays.flat()
-
         
         
         

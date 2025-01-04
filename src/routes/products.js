@@ -16,6 +16,11 @@ const upload = multer({storage: storage,
 router.get('/', productControllers.show)
 
 
+// to upTimeRobot
+app.get('/ping', (req, res) => {
+    res.status(200).send('OK');
+});
+
 
 
 

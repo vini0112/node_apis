@@ -8,12 +8,6 @@ const app = express()
 
 app.use(cors())
 
-app.use(cors({
-    origin: 'https://store-api-rxgw.onrender.com',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-}));
-
 
 app.use(express.json())
 app.use(router)

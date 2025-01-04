@@ -121,8 +121,8 @@ router.get('/acessoriosEscap/:id', productControllers.showById)
 
 // POST 
 router.post('/oleos' , upload.single('image'), productControllers.postOleo)
-router.post('/baterias', productControllers.postBateriaYfluido)
-router.post('/fluidos' ,productControllers.postBateriaYfluido)
+router.post('/baterias', upload.single('image'),productControllers.postBateriaYfluido)
+router.post('/fluidos', upload.single('image'),productControllers.postBateriaYfluido)
 
 // sessao filtros
 router.post('/filtroOleoSimples', productControllers.postEstruturaAplicacoes)

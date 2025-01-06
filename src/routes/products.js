@@ -1,8 +1,16 @@
 
 import Router from "express";
-import productControllers from "../app/controllers/productControllers.js";
 import {storage} from "../multerConfig.js";
 import multer from "multer";
+
+// controllers
+import oleosController from "../app/controllers/oleos.controller.js";
+import bateriasController from "../app/controllers/baterias.controller.js";
+import fluidosController from "../app/controllers/fluidos.controller.js";
+import filtrosOleoSimpController from "../app/controllers/filtrosOleoSimp.controller.js";
+
+
+
 const router = Router()
 
 // Configuração do Multer
@@ -13,7 +21,7 @@ const upload = multer({storage: storage,
 
 
 // GET
-router.get('/', productControllers.show)
+router.get('/', oleosController.show)
 
 
 // to upTimeRobot
@@ -26,187 +34,188 @@ router.get('/ping', (req, res) => {
 
 
 // GET BY IDS
-router.get('/oleos/:id', productControllers.showById)
-router.get('/baterias/:id', productControllers.showById)
-router.get('/fluidos/:id', productControllers.showById)
+router.get('/oleos/:id', oleosController.showById)
+
+router.get('/baterias/:id', bateriasController.showById)
+router.get('/fluidos/:id', fluidosController.showById)
 
 // sessao filtros
-router.get('/filtroOleoSimples/:id', productControllers.showById)
-router.get('/filtroOleoPesado/:id', productControllers.showById)
-router.get('/filtroCombustSimples/:id', productControllers.showById)
-router.get('/filtroCombustPesado/:id', productControllers.showById)
-router.get('/filtroArMotor/:id', productControllers.showById)
-router.get('/filtroArCabine/:id', productControllers.showById)
-router.get('/mangoteAR/:id', productControllers.showById)
+router.get('/filtroOleoSimples/:id', filtrosOleoSimpController.showById)
+router.get('/filtroOleoPesado/:id')
+router.get('/filtroCombustSimples/:id')
+router.get('/filtroCombustPesado/:id')
+router.get('/filtroArMotor/:id')
+router.get('/filtroArCabine/:id')
+router.get('/mangoteAR/:id')
 
 // sessao direcao
-router.get('/terminaisDirecao/:id', productControllers.showById)
-router.get('/barrasAxiais/:id', productControllers.showById)
-router.get('/estabilizadores/:id', productControllers.showById)
-router.get('/BuchaCaixaDirecao/:id', productControllers.showById)
+router.get('/terminaisDirecao/:id')
+router.get('/barrasAxiais/:id')
+router.get('/estabilizadores/:id')
+router.get('/BuchaCaixaDirecao/:id')
 
 // sessao suspensao
-router.get('/batedores/:id', productControllers.showById)
-router.get('/pivos/:id', productControllers.showById)
-router.get('/amortecedores/:id', productControllers.showById)
-router.get('/buchaSusp/:id', productControllers.showById)
-router.get('/coxinsAmort/:id', productControllers.showById)
-router.get('/bieletas/:id', productControllers.showById)
+router.get('/batedores/:id')
+router.get('/pivos/:id')
+router.get('/amortecedores/:id')
+router.get('/buchaSusp/:id')
+router.get('/coxinsAmort/:id')
+router.get('/bieletas/:id')
 
 // sessao freios
-router.get('/pastilhaFreio/:id', productControllers.showById)
-router.get('/discosFreio/:id', productControllers.showById)
-router.get('/sapatasFreio/:id', productControllers.showById)
-router.get('/cilindros/:id', productControllers.showById)
-router.get('/tamboresFreio/:id', productControllers.showById)
-router.get('/reparosFreio/:id', productControllers.showById)
-router.get('/cabosEflexiveis/:id', productControllers.showById)
-router.get('/acessoriosFreio/:id', productControllers.showById)
+router.get('/pastilhaFreio/:id')
+router.get('/discosFreio/:id')
+router.get('/sapatasFreio/:id')
+router.get('/cilindros/:id')
+router.get('/tamboresFreio/:id')
+router.get('/reparosFreio/:id')
+router.get('/cabosEflexiveis/:id')
+router.get('/acessoriosFreio/:id')
 
 // sessao ignicao
-router.get('/cabosDvela/:id', productControllers.showById)
-router.get('/velas/:id', productControllers.showById)
-router.get('/bobinasIgnicao/:id', productControllers.showById)
-router.get('/modulosIgnicao/:id', productControllers.showById)
+router.get('/cabosDvela/:id')
+router.get('/velas/:id')
+router.get('/bobinasIgnicao/:id')
+router.get('/modulosIgnicao/:id')
 
 // sessao carga
-router.get('/tensoresCorreia/:id', productControllers.showById)
-router.get('/correiaAlternador/:id', productControllers.showById)
-router.get('/correiasDentada/:id', productControllers.showById)
-router.get('/reguladorVolt/:id', productControllers.showById)
-router.get('/estatores/:id', productControllers.showById)
+router.get('/tensoresCorreia/:id')
+router.get('/correiaAlternador/:id')
+router.get('/correiasDentada/:id')
+router.get('/reguladorVolt/:id')
+router.get('/estatores/:id')
 
 // sessao partida
-router.get('/bendix/:id', productControllers.showById)
-router.get('/portaEscovas/:id', productControllers.showById)
-router.get('/acessoriosMotorPart/:id', productControllers.showById)
+router.get('/bendix/:id')
+router.get('/portaEscovas/:id')
+router.get('/acessoriosMotorPart/:id')
 
 // sessao arrefecimento
-router.get('/bombasDgua/:id', productControllers.showById)
-router.get('/reservatorioDagua/:id', productControllers.showById)
-router.get('/valvulasTermo/:id', productControllers.showById)
-router.get('/eletroventiladores/:id', productControllers.showById)
-router.get('/canosDagua/:id', productControllers.showById)
-router.get('/tubosDagua/:id', productControllers.showById)
-router.get('/resistenciaEletro/:id', productControllers.showById)
-router.get('/diversasArrefeci/:id', productControllers.showById)
+router.get('/bombasDgua/:id', )
+router.get('/reservatorioDagua/:id', )
+router.get('/valvulasTermo/:id', )
+router.get('/eletroventiladores/:id', )
+router.get('/canosDagua/:id', )
+router.get('/tubosDagua/:id', )
+router.get('/resistenciaEletro/:id', )
+router.get('/diversasArrefeci/:id', )
 
 // sessao injecao
-router.get('/bicosInjecao/:id', productControllers.showById)
-router.get('/bombaCombust/:id', productControllers.showById)
-router.get('/flangeBombaCombust/:id', productControllers.showById)
-router.get('/acessoriosCombust/:id', productControllers.showById)
+router.get('/bicosInjecao/:id', )
+router.get('/bombaCombust/:id', )
+router.get('/flangeBombaCombust/:id', )
+router.get('/acessoriosCombust/:id', )
 
 // sessao transmissao
-router.get('/discosEmbreagem/:id', productControllers.showById)
-router.get('/reparoCambioTrabulador/:id', productControllers.showById)
+router.get('/discosEmbreagem/:id', )
+router.get('/reparoCambioTrabulador/:id', )
 
 // sessao rodagem
-router.get('/cubosRoda/:id', productControllers.showById)
-router.get('/pontasEixo/:id', productControllers.showById)
-router.get('/juntasHomocinetica/:id', productControllers.showById)
-router.get('/rolamentosRoda/:id', productControllers.showById)
-router.get('/rolamentoDiversos/:id', productControllers.showById)
+router.get('/cubosRoda/:id', )
+router.get('/pontasEixo/:id', )
+router.get('/juntasHomocinetica/:id', )
+router.get('/rolamentosRoda/:id', )
+router.get('/rolamentoDiversos/:id', )
 
 // sessao escapes
-router.get('/bojosTras/:id', productControllers.showById)
-router.get('/canosIntermediario/:id', productControllers.showById)
-router.get('/coxinsEscap/:id', productControllers.showById)
-router.get('/acessoriosEscap/:id', productControllers.showById)
+router.get('/bojosTras/:id', )
+router.get('/canosIntermediario/:id', )
+router.get('/coxinsEscap/:id', )
+router.get('/acessoriosEscap/:id', )
 
 
 
 
 
 
-// POST 
-router.post('/oleos' , upload.single('image'), productControllers.postOleo)
-router.post('/baterias', upload.single('image'),productControllers.postBateriaYfluido)
-router.post('/fluidos', upload.single('image'),productControllers.postBateriaYfluido)
+// POST
+router.post('/oleos' , upload.single('image'), oleosController.postOleos)
+router.post('/baterias', bateriasController.postando)
+router.post('/fluidos', fluidosController.postando)
 
 // sessao filtros
-router.post('/filtroOleoSimples', productControllers.postEstruturaAplicacoes)
-router.post('/filtroOleoPesado', productControllers.postEstruturaAplicacoes)
-router.post('/filtroCombustSimples', productControllers.postEstruturaAplicacoes)
-router.post('/filtroCombustPesado', productControllers.postEstruturaAplicacoes)
-router.post('/filtroArMotor', productControllers.postEstruturaAplicacoes)
-router.post('/filtroArCabine', productControllers.postEstruturaAplicacoes)
-router.post('/mangoteAR', productControllers.postEstruturaAplicacoes)
+router.post('/filtroOleoSimples', filtrosOleoSimpController.postando)
+router.post('/filtroOleoPesado',)
+router.post('/filtroCombustSimples',)
+router.post('/filtroCombustPesado',)
+router.post('/filtroArMotor',)
+router.post('/filtroArCabine',)
+router.post('/mangoteAR',)
 
 // sessao direcao
-router.post('/terminaisDirecao', productControllers.postEstruturaAplicacoes)
-router.post('/barrasAxiais', productControllers.postBarrasAxiais)
-router.post('/estabilizadores', productControllers.postEstruturaAplicacoes)
-router.post('/BuchaCaixaDirecao', productControllers.postEstruturaAplicacoes)
+router.post('/terminaisDirecao',)
+router.post('/barrasAxiais')
+router.post('/estabilizadores',)
+router.post('/BuchaCaixaDirecao',)
 
 // sessao suspensao
-router.post('/batedores', productControllers.postEstruturaAplicacoes)
-router.post('/pivos', productControllers.postEstruturaAplicacoes)
-router.post('/amortecedores', productControllers.postEstruturaAplicacoes)
-router.post('/buchaSusp', productControllers.postEstruturaAplicacoes)
-router.post('/coxinsAmort', productControllers.postEstruturaAplicacoes)
-router.post('/bieletas', productControllers.postEstruturaAplicacoes)
+router.post('/batedores',)
+router.post('/pivos',)
+router.post('/amortecedores',)
+router.post('/buchaSusp',)
+router.post('/coxinsAmort',)
+router.post('/bieletas',)
 
 // sessao freios
-router.post('/pastilhaFreio', productControllers.postEstruturaAplicacoes)
-router.post('/discosFreio', productControllers.postEstruturaAplicacoes)
-router.post('/sapatasFreio', productControllers.postEstruturaAplicacoes)
-router.post('/cilindros', productControllers.postEstruturaAplicacoes)
-router.post('/tamboresFreio', productControllers.postEstruturaAplicacoes)
-router.post('/reparosFreio', productControllers.postEstruturaAplicacoes)
-router.post('/cabosEflexiveis', productControllers.postEstruturaAplicacoes)
-router.post('/acessoriosFreio', productControllers.postEstruturaAplicacoes)
+router.post('/pastilhaFreio',)
+router.post('/discosFreio',)
+router.post('/sapatasFreio',)
+router.post('/cilindros',)
+router.post('/tamboresFreio',)
+router.post('/reparosFreio',)
+router.post('/cabosEflexiveis',)
+router.post('/acessoriosFreio',)
 
 // sessao ignicao
-router.post('/cabosDvela', productControllers.postEstruturaAplicacoes)
-router.post('/velas', productControllers.postEstruturaAplicacoes)
-router.post('/bobinasIgnicao', productControllers.postEstruturaAplicacoes)
-router.post('/modulosIgnicao', productControllers.postEstruturaAplicacoes)
+router.post('/cabosDvela',)
+router.post('/velas',)
+router.post('/bobinasIgnicao',)
+router.post('/modulosIgnicao',)
 
 // sessao carga
-router.post('/tensoresCorreia', productControllers.postEstruturaAplicacoes)
-router.post('/correiaAlternador', productControllers.postEstruturaAplicacoes)
-router.post('/correiasDentada', productControllers.postEstruturaAplicacoes)
-router.post('/reguladorVolt', productControllers.postEstruturaAplicacoes)
-router.post('/estatores', productControllers.postEstruturaAplicacoes)
+router.post('/tensoresCorreia',)
+router.post('/correiaAlternador',)
+router.post('/correiasDentada',)
+router.post('/reguladorVolt',)
+router.post('/estatores',)
 
 // sessao partida
-router.post('/bendix', productControllers.postEstruturaAplicacoes)
-router.post('/portaEscovas', productControllers.postEstruturaAplicacoes)
-router.post('/acessoriosMotorPart', productControllers.postEstruturaAplicacoes)
+router.post('/bendix',)
+router.post('/portaEscovas',)
+router.post('/acessoriosMotorPart',)
 
 // sessao arrefecimento
-router.post('/bombasDgua', productControllers.postEstruturaAplicacoes)
-router.post('/reservatorioDagua', productControllers.postEstruturaAplicacoes)
-router.post('/valvulasTermo', productControllers.postEstruturaAplicacoes)
-router.post('/eletroventiladores', productControllers.postEstruturaAplicacoes)
-router.post('/canosDagua', productControllers.postEstruturaAplicacoes)
-router.post('/tubosDagua', productControllers.postEstruturaAplicacoes)
-router.post('/resistenciaEletro', productControllers.postEstruturaAplicacoes)
-router.post('/diversasArrefeci', productControllers.postEstruturaAplicacoes)
+router.post('/bombasDgua',)
+router.post('/reservatorioDagua',)
+router.post('/valvulasTermo',)
+router.post('/eletroventiladores',)
+router.post('/canosDagua',)
+router.post('/tubosDagua',)
+router.post('/resistenciaEletro',)
+router.post('/diversasArrefeci',)
 
 // sessao injecao
-router.post('/bicosInjecao', productControllers.postEstruturaAplicacoes)
-router.post('/bombaCombust', productControllers.postEstruturaAplicacoes)
-router.post('/flangeBombaCombust', productControllers.postEstruturaAplicacoes)
-router.post('/acessoriosCombust', productControllers.postEstruturaAplicacoes)
+router.post('/bicosInjecao',)
+router.post('/bombaCombust',)
+router.post('/flangeBombaCombust',)
+router.post('/acessoriosCombust',)
 
 // sessao transmissao
-router.post('/discosEmbreagem', productControllers.postEstruturaAplicacoes)
-router.post('/reparoCambioTrabulador', productControllers.postEstruturaAplicacoes)
+router.post('/discosEmbreagem')
+router.post('/reparoCambioTrabulador')
 
 // sessao rodagem
-router.post('/cubosRoda', productControllers.postEstruturaAplicacoes)
-router.post('/pontasEixo', productControllers.postEstruturaAplicacoes)
-router.post('/juntasHomocinetica', productControllers.postEstruturaAplicacoes)
-router.post('/rolamentosRoda', productControllers.postEstruturaAplicacoes)
-router.post('/rolamentoDiversos', productControllers.postEstruturaAplicacoes)
+router.post('/cubosRoda')
+router.post('/pontasEixo')
+router.post('/juntasHomocinetica')
+router.post('/rolamentosRoda')
+router.post('/rolamentoDiversos')
 
 // sessao escapes
-router.post('/bojosTras', productControllers.postEstruturaAplicacoes)
-router.post('/canosIntermediario', productControllers.postEstruturaAplicacoes)
-router.post('/coxinsEscap', productControllers.postEstruturaAplicacoes)
-router.post('/acessoriosEscap', productControllers.postEstruturaAplicacoes)
+router.post('/bojosTras')
+router.post('/canosIntermediario')
+router.post('/coxinsEscap')
+router.post('/acessoriosEscap')
 
 
 
@@ -214,93 +223,93 @@ router.post('/acessoriosEscap', productControllers.postEstruturaAplicacoes)
 
 
 // UPDATE
-router.put('/oleos/:id', productControllers.updateOleo)
-router.put('/baterias/:id', productControllers.updateBateriaYfluido)
-router.put('/fluidos/:id', productControllers.updateBateriaYfluido)
+router.put('/oleos/:id', oleosController.updateOleos)
+router.put('/baterias/:id', bateriasController.update)
+router.put('/fluidos/:id', fluidosController.update)
 
 // sessao filtros
-router.put('/filtroOleoSimples/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/filtroOleoPesado/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/filtroCombustSimples/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/filtroCombustPesado/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/filtroArMotor/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/filtroArCabine/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/mangoteAR/:id', productControllers.updateEstruturaAplicacoes)
+router.put('/filtroOleoSimples/:id', filtrosOleoSimpController.update)
+router.put('/filtroOleoPesado/:id')
+router.put('/filtroCombustSimples/:id')
+router.put('/filtroCombustPesado/:id')
+router.put('/filtroArMotor/:id')
+router.put('/filtroArCabine/:id')
+router.put('/mangoteAR/:id')
 
 // sessao de direcao
-router.put('/terminaisDirecao/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/barrasAxiais/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/estabilizadores/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/BuchaCaixaDirecao/:id', productControllers.updateEstruturaAplicacoes)
+router.put('/terminaisDirecao/:id')
+router.put('/barrasAxiais/:id')
+router.put('/estabilizadores/:id')
+router.put('/BuchaCaixaDirecao/:id')
 
 // sessao suspensao 
-router.put('/batedores/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/pivos/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/amortecedores/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/buchaSusp/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/coxinsAmort/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/bieletas/:id', productControllers.updateEstruturaAplicacoes)
+router.put('/batedores/:id')
+router.put('/pivos/:id')
+router.put('/amortecedores/:id')
+router.put('/buchaSusp/:id')
+router.put('/coxinsAmort/:id')
+router.put('/bieletas/:id')
 
 // sessao freios
-router.put('/pastilhaFreio/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/discosFreio/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/sapatasFreio/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/cilindros/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/tamboresFreio/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/reparosFreio/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/cabosEflexiveis/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/acessoriosFreio/:id', productControllers.updateEstruturaAplicacoes)
+router.put('/pastilhaFreio/:id')
+router.put('/discosFreio/:id')
+router.put('/sapatasFreio/:id')
+router.put('/cilindros/:id')
+router.put('/tamboresFreio/:id')
+router.put('/reparosFreio/:id')
+router.put('/cabosEflexiveis/:id')
+router.put('/acessoriosFreio/:id')
 
 // sessao ignicao
-router.put('/cabosDvela/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/velas/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/bobinasIgnicao/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/modulosIgnicao/:id', productControllers.updateEstruturaAplicacoes)
+router.put('/cabosDvela/:id')
+router.put('/velas/:id')
+router.put('/bobinasIgnicao/:id')
+router.put('/modulosIgnicao/:id')
 
 // sessao carga
-router.put('/tensoresCorreia/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/correiaAlternador/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/correiasDentada/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/reguladorVolt/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/estatores/:id', productControllers.updateEstruturaAplicacoes)
+router.put('/tensoresCorreia/:id')
+router.put('/correiaAlternador/:id')
+router.put('/correiasDentada/:id')
+router.put('/reguladorVolt/:id')
+router.put('/estatores/:id')
 
 // sessao partida
-router.put('/bendix/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/portaEscovas/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/acessoriosMotorPart/:id', productControllers.updateEstruturaAplicacoes)
+router.put('/bendix/:id')
+router.put('/portaEscovas/:id')
+router.put('/acessoriosMotorPart/:id')
 
 // sessao arrefecimento
-router.put('/bombasDgua/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/reservatorioDagua/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/valvulasTermo/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/eletroventiladores/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/canosDagua/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/tubosDagua/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/resistenciaEletro/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/diversasArrefeci/:id', productControllers.updateEstruturaAplicacoes)
+router.put('/bombasDgua/:id')
+router.put('/reservatorioDagua/:id')
+router.put('/valvulasTermo/:id')
+router.put('/eletroventiladores/:id')
+router.put('/canosDagua/:id')
+router.put('/tubosDagua/:id')
+router.put('/resistenciaEletro/:id')
+router.put('/diversasArrefeci/:id')
 
 // sessao injecao
-router.put('/bicosInjecao/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/bombaCombust/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/flangeBombaCombust/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/acessoriosCombust/:id', productControllers.updateEstruturaAplicacoes)
+router.put('/bicosInjecao/:id')
+router.put('/bombaCombust/:id')
+router.put('/flangeBombaCombust/:id')
+router.put('/acessoriosCombust/:id')
 
 // sessao transmissao
-router.put('/discosEmbreagem/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/reparoCambioTrabulador/:id', productControllers.updateEstruturaAplicacoes)
+router.put('/discosEmbreagem/:id')
+router.put('/reparoCambioTrabulador/:id')
 
 // sessao rodagem
-router.put('/cubosRoda/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/pontasEixo/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/juntasHomocinetica/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/rolamentosRoda/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/rolamentoDiversos/:id', productControllers.updateEstruturaAplicacoes)
+router.put('/cubosRoda/:id')
+router.put('/pontasEixo/:id')
+router.put('/juntasHomocinetica/:id')
+router.put('/rolamentosRoda/:id')
+router.put('/rolamentoDiversos/:id')
 
 // sessao escapes
-router.put('/bojosTras/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/canosIntermediario/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/coxinsEscap/:id', productControllers.updateEstruturaAplicacoes)
-router.put('/acessoriosEscap/:id', productControllers.updateEstruturaAplicacoes)
+router.put('/bojosTras/:id')
+router.put('/canosIntermediario/:id')
+router.put('/coxinsEscap/:id')
+router.put('/acessoriosEscap/:id')
 
 
 
@@ -308,93 +317,93 @@ router.put('/acessoriosEscap/:id', productControllers.updateEstruturaAplicacoes)
 
 
 // DELETE
-router.delete('/oleos/:id', productControllers.deleting)
-router.delete('/baterias/:id', productControllers.deleting)
-router.delete('/fluidos/:id', productControllers.deleting)
+router.delete('/oleos/:id', oleosController.deletingOleos)
+router.delete('/baterias/:id', bateriasController.deleting)
+router.delete('/fluidos/:id', fluidosController.deleting)
 
 // sessao filtros
-router.delete('/filtroOleoSimples/:id', productControllers.deleting)
-router.delete('/filtroOleoPesado/:id', productControllers.deleting)
-router.delete('/filtroCombustSimples/:id', productControllers.deleting)
-router.delete('/filtroCombustPesado/:id', productControllers.deleting)
-router.delete('/filtroArMotor/:id', productControllers.deleting)
-router.delete('/filtroArCabine/:id', productControllers.deleting)
-router.delete('/mangoteAR/:id', productControllers.deleting)
+router.delete('/filtroOleoSimples/:id', filtrosOleoSimpController.deleting)
+router.delete('/filtroOleoPesado/:id')
+router.delete('/filtroCombustSimples/:id')
+router.delete('/filtroCombustPesado/:id')
+router.delete('/filtroArMotor/:id')
+router.delete('/filtroArCabine/:id')
+router.delete('/mangoteAR/:id')
 
 // sessao direcao
-router.delete('/terminaisDirecao/:id', productControllers.deleting)
-router.delete('/barrasAxiais/:id', productControllers.deleting)
-router.delete('/estabilizadores/:id', productControllers.deleting)
-router.delete('/BuchaCaixaDirecao/:id', productControllers.deleting)
+router.delete('/terminaisDirecao/:id')
+router.delete('/barrasAxiais/:id')
+router.delete('/estabilizadores/:id')
+router.delete('/BuchaCaixaDirecao/:id')
 
 // sessao suspensao
-router.delete('/batedores/:id', productControllers.deleting)
-router.delete('/pivos/:id', productControllers.deleting)
-router.delete('/amortecedores/:id', productControllers.deleting)
-router.delete('/buchaSusp/:id', productControllers.deleting)
-router.delete('/coxinsAmort/:id', productControllers.deleting)
-router.delete('/bieletas/:id', productControllers.deleting)
+router.delete('/batedores/:id')
+router.delete('/pivos/:id')
+router.delete('/amortecedores/:id')
+router.delete('/buchaSusp/:id')
+router.delete('/coxinsAmort/:id')
+router.delete('/bieletas/:id')
 
 // sessao freios
-router.delete('/pastilhaFreio/:id', productControllers.deleting)
-router.delete('/discosFreio/:id', productControllers.deleting)
-router.delete('/sapatasFreio/:id', productControllers.deleting)
-router.delete('/cilindros/:id', productControllers.deleting)
-router.delete('/tamboresFreio/:id', productControllers.deleting)
-router.delete('/reparosFreio/:id', productControllers.deleting)
-router.delete('/cabosEflexiveis/:id', productControllers.deleting)
-router.delete('/acessoriosFreio/:id', productControllers.deleting)
+router.delete('/pastilhaFreio/:id')
+router.delete('/discosFreio/:id')
+router.delete('/sapatasFreio/:id')
+router.delete('/cilindros/:id')
+router.delete('/tamboresFreio/:id')
+router.delete('/reparosFreio/:id')
+router.delete('/cabosEflexiveis/:id')
+router.delete('/acessoriosFreio/:id')
 
 // sessao ignicao
-router.delete('/cabosDvela/:id', productControllers.deleting)
-router.delete('/velas/:id', productControllers.deleting)
-router.delete('/bobinasIgnicao/:id', productControllers.deleting)
-router.delete('/modulosIgnicao/:id', productControllers.deleting)
+router.delete('/cabosDvela/:id')
+router.delete('/velas/:id')
+router.delete('/bobinasIgnicao/:id')
+router.delete('/modulosIgnicao/:id')
 
 // sessao carga
-router.delete('/tensoresCorreia/:id', productControllers.deleting)
-router.delete('/correiaAlternador/:id', productControllers.deleting)
-router.delete('/correiasDentada/:id', productControllers.deleting)
-router.delete('/reguladorVolt/:id', productControllers.deleting)
-router.delete('/estatores/:id', productControllers.deleting)
+router.delete('/tensoresCorreia/:id')
+router.delete('/correiaAlternador/:id')
+router.delete('/correiasDentada/:id')
+router.delete('/reguladorVolt/:id')
+router.delete('/estatores/:id')
 
 // sessao partida
-router.delete('/bendix/:id', productControllers.deleting)
-router.delete('/portaEscovas/:id', productControllers.deleting)
-router.delete('/acessoriosMotorPart/:id', productControllers.deleting)
+router.delete('/bendix/:id')
+router.delete('/portaEscovas/:id')
+router.delete('/acessoriosMotorPart/:id')
 
 // sessao arrefecimento
-router.delete('/bombasDgua/:id', productControllers.deleting)
-router.delete('/reservatorioDagua/:id', productControllers.deleting)
-router.delete('/valvulasTermo/:id', productControllers.deleting)
-router.delete('/eletroventiladores/:id', productControllers.deleting)
-router.delete('/canosDagua/:id', productControllers.deleting)
-router.delete('/tubosDagua/:id', productControllers.deleting)
-router.delete('/resistenciaEletro/:id', productControllers.deleting)
-router.delete('/diversasArrefeci/:id', productControllers.deleting)
+router.delete('/bombasDgua/:id')
+router.delete('/reservatorioDagua/:id')
+router.delete('/valvulasTermo/:id')
+router.delete('/eletroventiladores/:id')
+router.delete('/canosDagua/:id')
+router.delete('/tubosDagua/:id')
+router.delete('/resistenciaEletro/:id')
+router.delete('/diversasArrefeci/:id')
 
 // sessao injecao
-router.delete('/bicosInjecao/:id', productControllers.deleting)
-router.delete('/bombaCombust/:id', productControllers.deleting)
-router.delete('/flangeBombaCombust/:id', productControllers.deleting)
-router.delete('/acessoriosCombust/:id', productControllers.deleting)
+router.delete('/bicosInjecao/:id')
+router.delete('/bombaCombust/:id')
+router.delete('/flangeBombaCombust/:id')
+router.delete('/acessoriosCombust/:id')
 
 // sessao transmissao
-router.delete('/discosEmbreagem/:id', productControllers.deleting)
-router.delete('/reparoCambioTrabulador/:id', productControllers.deleting)
+router.delete('/discosEmbreagem/:id')
+router.delete('/reparoCambioTrabulador/:id')
 
 // sessao rodagem
-router.delete('/cubosRoda/:id', productControllers.deleting)
-router.delete('/pontasEixo/:id', productControllers.deleting)
-router.delete('/juntasHomocinetica/:id', productControllers.deleting)
-router.delete('/rolamentosRoda/:id', productControllers.deleting)
-router.delete('/rolamentoDiversos/:id', productControllers.deleting)
+router.delete('/cubosRoda/:id')
+router.delete('/pontasEixo/:id')
+router.delete('/juntasHomocinetica/:id')
+router.delete('/rolamentosRoda/:id')
+router.delete('/rolamentoDiversos/:id')
 
 // sessao escapes
-router.delete('/bojosTras/:id', productControllers.deleting)
-router.delete('/canosIntermediario/:id', productControllers.deleting)
-router.delete('/coxinsEscap/:id', productControllers.deleting)
-router.delete('/acessoriosEscap/:id', productControllers.deleting)
+router.delete('/bojosTras/:id')
+router.delete('/canosIntermediario/:id')
+router.delete('/coxinsEscap/:id')
+router.delete('/acessoriosEscap/:id')
 
 
 

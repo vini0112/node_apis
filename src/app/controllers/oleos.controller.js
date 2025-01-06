@@ -1,48 +1,50 @@
 
-import { readFileSync, writeFileSync } from "fs"
+import oleosRepository from "../repositories/oleos.repository.js"
 
 
+class oleosController{
 
-// ler
-const readFile = () =>{
-    const content = readFileSync('./allpeaces.json', "utf-8")
-    return(JSON.parse(content))
-}
-
-// salva
-const writeFile = (content) =>{
-    const updateFile = JSON.stringify(content)
-    writeFileSync('./allpeaces.json', updateFile, 'utf-8')
-}
-
-
-class productControllers{
-
-    // SHOW ALL
-    show(req, res){
-        const currentContent = readFile()
-        res.send(currentContent)
+    // SHOW ALL OLEOS
+    async show(req, res){
+        
+        const row = await oleosRepository.findAll()
+        res.json(row)
     }
 
-    // SHOW BY ID
-    showById(req, res){
+    // oleos showById
+    async showById(req, res){
+
         const id = req.params.id
-        const path = req.path.replace(/\/\d+$/, '')
-        const cleanPath = path.split('/').filter(segment => isNaN(segment)).join('/')
-
-        const currentContent = readFile()
-        const selectedItem = currentContent[cleanPath].findIndex(item => item.id == id)
-                                            // <>
-        // console.log()
-                            // <>
-        if(!currentContent[cleanPath][selectedItem]){
-            res.send('not Found!')
-        }
-
-        res.send(currentContent[cleanPath][selectedItem])
-                                // <>
+        const row = await oleosRepository.findById(id)
+        res.json(row)
     }
 
+    // posting oleos
+    async postOleos(req, res){
+        const dados = req.body
+        const row = await oleosRepository.posting(dados)
+        res.json(row)
+    }
+
+    // editing oleos
+    async updateOleos(req, res){
+        const dados = req.body
+        const id = req.params.id
+
+        const row = await oleosRepository.editing(id, dados)
+        res.json(row)
+    }
+
+    // deleting oleos
+    async deletingOleos(req, res){
+        const id = req.params.id
+        const row = await oleosRepository.delete(id)
+        res.json(row)
+    }
+
+
+
+    // not in use this ones 
 
 
     // POSTS
@@ -80,7 +82,7 @@ class productControllers{
         currentContent.oleos.push({id, nome, marca, image, info, price, qtd})
         
         writeFile(currentContent)
-        res.status(201).send()
+        res.status(201).send("Created")
         
     }
 
@@ -316,33 +318,6 @@ class productControllers{
 
 
 
-    // UPDATE
-    updateOleo(req, res){
-        const id = req.params.id
-        const {nome, image, marca, info, price, qtd } = req.body
-    
-        const currentContent = readFile()
-    
-        const selectedItem = currentContent.oleos.findIndex(item => item.id == id)
-        const {id: cId, nome: cNome, image: cImage, marca: cMarca, info: cInfo, price: cPrice} = currentContent.oleos[selectedItem]
-
-        const newObj = {
-            id: cId,
-            nome: nome ? nome: cNome,
-            image: image ? image: cImage,
-            marca: marca ? marca: cMarca,
-            info: info ? info: cInfo,
-            price: price ? price: cPrice,
-            qtd: qtd 
-        }
-
-        currentContent.oleos[selectedItem] = newObj
-
-        
-        writeFile(currentContent)
-        res.send(newObj)
-        // console.log(currentContent.oleos[selectedItem].qtd)
-    }
 
     updateBateriaYfluido(req, res){
     
@@ -555,8 +530,6 @@ class productControllers{
 
 
 
-
-    // DELETE ALL
     deleting(req, res){
         const currentContent = readFile()    
     
@@ -576,4 +549,4 @@ class productControllers{
 }
 
 
-export default new productControllers();
+export default new oleosController();

@@ -1,19 +1,13 @@
-import filtroOleoSimpRepository from "../repositories/filtroOleoSimp.repository.js"
 
-class filtrosOleoSimpController {
+import filtrosArRepository from "../repositories/filtrosAr.repository.js"
 
-// SHOW ALL 
-    async show(req, res){
-        
-        const row = await filtroOleoSimpRepository.findAll()
-        res.json(row)
-    }
+class filtrosArController {
 
     //  showById
     async showById(req, res){
 
         const id = req.params.id
-        const row = await filtroOleoSimpRepository.findById(id)
+        const row = await filtrosArRepository.findById(id)
         res.json(row)
     }
 
@@ -31,9 +25,10 @@ class filtrosOleoSimpController {
         if(dados.aplicacoesThree){
             dados.aplicacoesTwo = JSON.stringify(dados.aplicacoesTwo)
             dados.aplicacoesThree = JSON.stringify(dados.aplicacoesThree)
-        }
+        } 
 
-        const row = await filtroOleoSimpRepository.posting(dados)
+        
+        const row = await filtrosArRepository.posting(dados)
         res.json(row)
     }
 
@@ -42,17 +37,17 @@ class filtrosOleoSimpController {
         const dados = req.body
         const id = req.params.id
 
-        const row = await filtroOleoSimpRepository.editing(id, dados)
+        const row = await filtrosArRepository.editing(id, dados)
         res.json(row)
     }
 
     // deleting 
     async deleting(req, res){
         const id = req.params.id
-        const row = await filtroOleoSimpRepository.delete(id)
+        const row = await filtrosArRepository.delete(id)
         res.json(row)
     }
 
 }
 
-export default new filtrosOleoSimpController()
+export default new filtrosArController()

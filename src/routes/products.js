@@ -8,6 +8,13 @@ import oleosController from "../app/controllers/oleos.controller.js";
 import bateriasController from "../app/controllers/baterias.controller.js";
 import fluidosController from "../app/controllers/fluidos.controller.js";
 import filtrosOleoSimpController from "../app/controllers/filtrosOleoSimp.controller.js";
+import filtrosOleoPesadoController from "../app/controllers/filtrosOleoPesado.controller.js";
+import filtrosCombustSimplesController from "../app/controllers/filtrosCombustSimples.controller.js";
+import filtrosCombustPesadoController from "../app/controllers/filtrosCombustPesado.controller.js";
+import filtrosArController from "../app/controllers/filtrosAr.controller.js";
+import mangotesArController from "../app/controllers/mangotesAr.controller.js";
+
+
 
 
 
@@ -41,12 +48,12 @@ router.get('/fluidos/:id', fluidosController.showById)
 
 // sessao filtros
 router.get('/filtroOleoSimples/:id', filtrosOleoSimpController.showById)
-router.get('/filtroOleoPesado/:id')
-router.get('/filtroCombustSimples/:id')
-router.get('/filtroCombustPesado/:id')
-router.get('/filtroArMotor/:id')
+router.get('/filtroOleoPesado/:id', filtrosOleoPesadoController.showById)
+router.get('/filtroCombustSimples/:id', filtrosCombustSimplesController.showById)
+router.get('/filtroCombustPesado/:id', filtrosCombustPesadoController.showById)
+router.get('/filtroArMotor/:id', filtrosArController.showById)
 router.get('/filtroArCabine/:id')
-router.get('/mangoteAR/:id')
+router.get('/mangoteAR/:id', mangotesArController.showById)
 
 // sessao direcao
 router.get('/terminaisDirecao/:id')
@@ -135,12 +142,12 @@ router.post('/fluidos', fluidosController.postando)
 
 // sessao filtros
 router.post('/filtroOleoSimples', filtrosOleoSimpController.postando)
-router.post('/filtroOleoPesado',)
-router.post('/filtroCombustSimples',)
-router.post('/filtroCombustPesado',)
-router.post('/filtroArMotor',)
+router.post('/filtroOleoPesado', filtrosOleoPesadoController.postando)
+router.post('/filtroCombustSimples', filtrosCombustSimplesController.postando)
+router.post('/filtroCombustPesado', filtrosCombustPesadoController.postando)
+router.post('/filtroArMotor', filtrosArController.postando)
 router.post('/filtroArCabine',)
-router.post('/mangoteAR',)
+router.post('/mangoteAR', mangotesArController.postando)
 
 // sessao direcao
 router.post('/terminaisDirecao',)
@@ -229,12 +236,12 @@ router.put('/fluidos/:id', fluidosController.update)
 
 // sessao filtros
 router.put('/filtroOleoSimples/:id', filtrosOleoSimpController.update)
-router.put('/filtroOleoPesado/:id')
-router.put('/filtroCombustSimples/:id')
-router.put('/filtroCombustPesado/:id')
-router.put('/filtroArMotor/:id')
+router.put('/filtroOleoPesado/:id', filtrosOleoPesadoController.update)
+router.put('/filtroCombustSimples/:id', filtrosCombustSimplesController.update)
+router.put('/filtroCombustPesado/:id', filtrosCombustPesadoController.update)
+router.put('/filtroArMotor/:id', filtrosArController.update)
 router.put('/filtroArCabine/:id')
-router.put('/mangoteAR/:id')
+router.put('/mangoteAR/:id', mangotesArController.update)
 
 // sessao de direcao
 router.put('/terminaisDirecao/:id')
@@ -323,12 +330,12 @@ router.delete('/fluidos/:id', fluidosController.deleting)
 
 // sessao filtros
 router.delete('/filtroOleoSimples/:id', filtrosOleoSimpController.deleting)
-router.delete('/filtroOleoPesado/:id')
-router.delete('/filtroCombustSimples/:id')
-router.delete('/filtroCombustPesado/:id')
-router.delete('/filtroArMotor/:id')
+router.delete('/filtroOleoPesado/:id', filtrosOleoPesadoController.deleting)
+router.delete('/filtroCombustSimples/:id', filtrosCombustSimplesController.deleting)
+router.delete('/filtroCombustPesado/:id', filtrosCombustPesadoController.deleting)
+router.delete('/filtroArMotor/:id', filtrosArController.deleting)
 router.delete('/filtroArCabine/:id')
-router.delete('/mangoteAR/:id')
+router.delete('/mangoteAR/:id', mangotesArController.deleting)
 
 // sessao direcao
 router.delete('/terminaisDirecao/:id')

@@ -2,7 +2,8 @@ import mysql from 'mysql2'
 
 
 const connection = mysql.createConnection({
-    host: 'localhost',
+    // host: 'localhost',
+    host: process.env.DATABASE_URL,
     port: '3306',
     user: 'root',
     password: 'vini1@',

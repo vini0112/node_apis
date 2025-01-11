@@ -1,5 +1,6 @@
 import express from "express"
 import cors from "cors"
+import cookieParser from 'cookie-parser'
 
 const app = express()
 
@@ -20,12 +21,13 @@ import routesTransmissao from './routes/route.transmissao.js'
 import routesRodagem from './routes/route.rodagem.js'
 import routesEscapes from './routes/route.escapes.js'
 
-import usersRouter from "./routes/users.js"
+import usersRouter from "./routes/route.users.js"
 
 
 
 app.use(cors())
 app.use(express.json())
+app.use(cookieParser())
 app.use('/uploads', express.static('uploads'))
 
 

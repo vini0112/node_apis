@@ -1,0 +1,32 @@
+import { consulta } from "../../database/connection.js"
+
+
+class estabilizadoresRepository {
+    findAll(){
+        const sql = "SELECT * FROM estabilizadores"
+        return consulta(sql, 'Not Found!')
+    }
+
+    findById(id){
+        const sql = "SELECT * FROM estabilizadores WHERE id=?"
+        return consulta(sql, id, 'Product Not Found!')
+    }
+
+    posting(dados){
+        let sql = "INSERT INTO estabilizadores SET ?"
+        return consulta(sql, dados, 'Not Created!')
+    }
+
+    editing(id, dados){
+        let sql = "UPDATE estabilizadores SET ? WHERE id=?"
+        return consulta(sql, [dados, id], 'Erro in Edit Product!')
+    }
+
+    delete(id){
+        const sql = 'DELETE FROM estabilizadores WHERE id=?'
+        return consulta(sql, id, 'Erro in Delete Product!')
+    }
+
+}
+
+export default new estabilizadoresRepository()
